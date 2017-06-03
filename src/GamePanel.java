@@ -40,8 +40,7 @@ void drawEndState(Graphics g){
 }
 
 void drawMenuState(Graphics g){
-	rect(0, 0, 500, 900);
-	fill(250, 250, 250);
+	
 
 }
 
