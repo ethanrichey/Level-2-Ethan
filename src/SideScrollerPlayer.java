@@ -1,0 +1,11 @@
+
+public class SideScrollerPlayer {
+
+	
+	
+	
+	SideScrollerPlayer(){
+		
+	}
+	
+}
