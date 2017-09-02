@@ -1,11 +1,10 @@
-/GameObject.class
 /GamePanel.class
 /LeagueInvaders.class
 /LeagueInvaders.jar
 /SideScrollerObjects.class
 /SideScrollerPanel.class
 /SideScrollerPlayer.class
+/TwoLeagueInvaders.class
 /UpScroller.class
 /UpScrollerPlatform.class
 /UpScrollerPlayer.class
-/TwoLeagueInvaders.class
