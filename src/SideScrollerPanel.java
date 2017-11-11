@@ -66,7 +66,11 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
-
+		if (collision(player)) {
+			System.out.println("crash");
+			player.setCollide(true);
+			
+		}
 	}
 
 	@Override
@@ -81,9 +85,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		System.out.println(e.getKeyCode());
 		if (e.getKeyCode() == KeyEvent.VK_SPACE) {
 			player.jump();
-			if (collision(player)) {
-				System.out.println("crash");
-			}
+			
 			repaint();
 		}
 	}
