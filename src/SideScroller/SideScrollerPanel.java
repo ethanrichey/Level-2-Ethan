@@ -1,3 +1,4 @@
+package SideScroller;
 
 // Randomize rectangle positions, add a timer, configure object collision logic (bottom of object versus top of object).
 import java.awt.Graphics;
@@ -93,6 +94,6 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
-
+ 
 	}
 }

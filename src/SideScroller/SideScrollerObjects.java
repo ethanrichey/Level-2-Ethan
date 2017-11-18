@@ -1,3 +1,4 @@
+package SideScroller;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
@@ -6,13 +7,14 @@ import java.util.Random;
 public class SideScrollerObjects {
 
 	int x;
-	int y;
+	double y;
 	int w;
 	int h;
 	Rectangle rect = new Rectangle();
 	boolean scrolls = true;
 	Random rand = new Random();
 	public int randint = rand.nextInt(850);
+	private float scrollspeed = (float) .5;
 
 	SideScrollerObjects(int x, int y, int w, int h) {
 		this.x = x;
@@ -25,16 +27,22 @@ public class SideScrollerObjects {
 
 	public void draw(Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(x, y, w, h);
+		g.fillRect(x, (int) y, w, h);
 		if (x <= 0) {
 			x = SideScrollerPanel.WIDTH;
 			y = randint;
 		}
 		if (scrolls) {
-			x--;
+			x -= scrollspeed;
 		}
-		rect.setBounds(x, y, w, h);
+		rect.setBounds(x, (int) y, w, h);
 		g.setColor(Color.RED);
-		g.drawRect(x, y, w, h);
+		g.drawRect(x, (int) y, w, h);
+	}
+	public int getX() {
+		return x;
+	}
+	public int getY() {
+		return (int) y;
 	}
 }
