@@ -4,10 +4,10 @@ import java.awt.Graphics;
 
 public class SideScrollerPlayer extends SideScrollerObjects {
 
-	private int jumph = -175;
-	private double playergrav = .5;
+	private double jumph = -2;
+	private double playergrav = .01;
 	private boolean collide = false;
-	private int yVelocity = 1;
+	private double yVelocity = 0;
 
 	SideScrollerPlayer(int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -27,29 +27,39 @@ public class SideScrollerPlayer extends SideScrollerObjects {
 		this.jumph = jumph;
 
 	}
-
-	public void draw(Graphics g) {
+	
+	public void update() {
 		
-		y = (int) rect.getY();
-		if (y < SideScrollerPanel.HEIGHT - h - 20 && collide == false) {
-			//y += playergrav;
-			y += yVelocity;
-			rect.setBounds(x, (int) (y + yVelocity), w, h);
-		}
-		else if( collide == true) {
+		 if(collide == true) {
 			rect.setBounds(x, (int) y, w, h);
+			if(yVelocity >= 0) {
+				yVelocity = 0;
+			}
+			System.out.println("yes");
 		}
+		 else if ( collide == false) {
+			//y += playergrav;
+			y = y + yVelocity;
+			//rect.setBounds(x, (int) (y), w, h);
+			
+		}
+		y =  rect.getY();
 		collide = false;
 		//super.draw(g);
 		yVelocity += playergrav;
+		rect.setRect(x, Math.ceil(y + yVelocity), w, h);
+		//rect.setBounds(x,y + yVelocity, w, h);
+		
 		//y += yVelocity;
 		System.out.println(yVelocity);
+		System.out.println(y + "y");
+	}
+	
+	public void draw(Graphics g) {
 		//rect.setBounds(x, y, w, h);
 		g.setColor(Color.RED);
 		g.fillRect(x, (int) y, w, h);
-		if(y >= 600) {
-			yVelocity = 0;
-		}
+		
 		
 		
 	}

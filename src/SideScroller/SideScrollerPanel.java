@@ -70,8 +70,8 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		if (collision(player)) {
 			System.out.println("crash");
 			player.setCollide(true);
-			
 		}
+		player.update();
 	}
 
 	@Override
