@@ -13,8 +13,8 @@ public class SideScrollerObjects {
 	Rectangle rect = new Rectangle();
 	boolean scrolls = true;
 	Random rand = new Random();
-	public int randint = rand.nextInt(850);
-	private float scrollspeed = (float) .5;
+	public int randint = rand.nextInt(750);
+	private float scrollspeed = (float) 2;
 
 	SideScrollerObjects(int x, int y, int w, int h) {
 		this.x = x;
@@ -31,6 +31,7 @@ public class SideScrollerObjects {
 		if (x <= 0) {
 			x = SideScrollerPanel.WIDTH;
 			y = randint;
+			y = rand.nextInt(750);
 		}
 		if (scrolls) {
 			x -= scrollspeed;

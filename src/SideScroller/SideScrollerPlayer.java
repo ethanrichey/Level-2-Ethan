@@ -4,8 +4,8 @@ import java.awt.Graphics;
 
 public class SideScrollerPlayer extends SideScrollerObjects {
 
-	private double jumph = -2;
-	private double playergrav = .01;
+	private double jumph = -4.5;
+	private double playergrav = .03;
 	private boolean collide = false;
 	private double yVelocity = 0;
 
@@ -53,6 +53,7 @@ public class SideScrollerPlayer extends SideScrollerObjects {
 		//y += yVelocity;
 		System.out.println(yVelocity);
 		System.out.println(y + "y");
+		System.out.println(x + "x");
 	}
 	
 	public void draw(Graphics g) {
