@@ -5,9 +5,10 @@ import java.awt.Graphics;
 public class SideScrollerPlayer extends SideScrollerObjects {
 
 	private double jumph = -4.5;
-	private double playergrav = .03;
+	private double playergrav = .02;
 	private boolean collide = false;
 	private double yVelocity = 0;
+	private int yLimit = 1000;
 
 	SideScrollerPlayer(int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -27,7 +28,9 @@ public class SideScrollerPlayer extends SideScrollerObjects {
 		this.jumph = jumph;
 
 	}
-	
+	public void setYLimit(int l) {
+		yLimit = l;
+	}
 	public void update() {
 		
 		 if(collide == true) {

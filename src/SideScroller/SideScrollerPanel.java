@@ -19,10 +19,10 @@ import javax.swing.Timer;
 public class SideScrollerPanel extends JPanel implements ActionListener, KeyListener {
 
 	JFrame frame = new JFrame();
-	public static final int HEIGHT = 800;
-	public static final int WIDTH = 1100;
+	public static final int HEIGHT = 1000;
+	public static final int WIDTH = 2000;
 	Timer time = new Timer(60 / 1000, this);
-	SideScrollerPlayer player = new SideScrollerPlayer(150, 600, 50, 50);
+	SideScrollerPlayer player = new SideScrollerPlayer(150, 600, 150, 200);
 	private BufferedImage img = null;
 
 	void run() {
@@ -33,12 +33,17 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		frame.setVisible(true);
 		frame.addKeyListener(this);
 		obj();
+		image();
+		
 	}
 
 	public boolean collision(SideScrollerPlayer player) {
 		for (SideScrollerObjects sso : platforms) {
 			if (sso.rect.intersects(player.rect)) {
 				return true;
+			}
+			else {
+				player.setYLimit(950);
 			}
 		}
 
@@ -49,11 +54,11 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	ArrayList<SideScrollerObjects> platforms = new ArrayList<SideScrollerObjects>();
 
 	public void obj() {
-		platforms.add(new SideScrollerObjects(100, 550, 240, 50));
-		platforms.add(new SideScrollerObjects(150, 700, 240, 50));
-		platforms.add(new SideScrollerObjects(350, 425, 240, 50));
-		platforms.add(new SideScrollerObjects(600, 300, 240, 50));
-		platforms.add(new SideScrollerObjects(850, 175, 240, 50));
+		platforms.add(new SideScrollerObjects(100, 550, 330, 2));
+		platforms.add(new SideScrollerObjects(150, 700, 330, 2));
+		platforms.add(new SideScrollerObjects(350, 425, 330, 2));
+		platforms.add(new SideScrollerObjects(600, 300, 330, 2));
+		platforms.add(new SideScrollerObjects(850, 175, 330, 2));
 	}
 
 	@Override
@@ -62,7 +67,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 			s.draw(g);
 		}
 		player.draw(g);
-		g.drawImage( img, 400, 400, this );
+		g.drawImage( img, player.x, (int) player.y, player.w, player.h, this );
 
 	}
 
@@ -102,10 +107,10 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
-	public void image (BufferedImage img) {
+	public void image () {
 		try {
 			
-		    img = ImageIO.read( new File("report2.jpg" ));
+		    img = ImageIO.read((this.getClass().getResourceAsStream("AjitPai.jpeg")));
 		}
 		catch ( IOException exc ) {
 		
