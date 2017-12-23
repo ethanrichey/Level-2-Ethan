@@ -22,7 +22,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public static final int HEIGHT = 1000;
 	public static final int WIDTH = 2000;
 	Timer time = new Timer(60 / 1000, this);
-	SideScrollerPlayer player = new SideScrollerPlayer(150, 600, 150, 200);
+	SideScrollerPlayer player = new SideScrollerPlayer(150, 600, 50, 50);
 	private BufferedImage img = null;
 
 	void run() {
@@ -110,7 +110,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public void image () {
 		try {
 			
-		    img = ImageIO.read((this.getClass().getResourceAsStream("AjitPai.jpeg")));
+		    img = ImageIO.read((this.getClass().getResourceAsStream("BenSwolo.jpg")));
 		}
 		catch ( IOException exc ) {
 		

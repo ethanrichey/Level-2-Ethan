@@ -4,8 +4,8 @@ import java.awt.Graphics;
 
 public class SideScrollerPlayer extends SideScrollerObjects {
 
-	private double jumph = -4.5;
-	private double playergrav = .02;
+	private double jumph = -4.7;
+	private double playergrav = .04;
 	private boolean collide = false;
 	private double yVelocity = 0;
 	private int yLimit = 1000;
