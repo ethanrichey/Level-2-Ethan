@@ -14,7 +14,7 @@ public class SideScrollerObjects {
 	boolean scrolls = true;
 	Random rand = new Random();
 	public int randint = rand.nextInt(750);
-	private float scrollspeed = (float) 20;
+	private float scrollspeed = (float) 7;
 
 	SideScrollerObjects(int x, int y, int w, int h) {
 		this.x = x;
@@ -30,8 +30,9 @@ public class SideScrollerObjects {
 		g.fillRect(x, (int) y, w, h);
 		if (x <= -250) {
 			x = SideScrollerPanel.WIDTH;
+			x = randint + 2000;
 			y = randint;
-			y = rand.nextInt(750);
+			y = rand.nextInt(1000);
 		}
 		if (scrolls) {
 			x -= scrollspeed;
