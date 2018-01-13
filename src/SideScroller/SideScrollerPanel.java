@@ -120,7 +120,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public void image () {
 		try {
 			
-		    img = ImageIO.read((this.getClass().getResourceAsStream("brendan.jpg")));
+		    img = ImageIO.read((this.getClass().getResourceAsStream("brendanfraser.jpg")));
 		}
 		catch ( IOException exc ) {
 		
