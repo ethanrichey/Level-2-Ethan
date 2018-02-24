@@ -31,8 +31,11 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	private BufferedImage img2 = null;
 	private BufferedImage img3 = null;
 	private BufferedImage img4 = null;
+	private BufferedImage img5 = null;
+	private BufferedImage img6 = null;
 	private int yLimit = 1000;
 	Random rando = new Random(10);
+	int networth = 10000000;
 
 	void run() {
 		frame.setSize(WIDTH, HEIGHT);
@@ -43,10 +46,9 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		obj();
 		image();
 		
-	}
-	public void endQuip() {
 		
 	}
+	
 	public boolean collision(SideScrollerPlayer player) {
 		for (SideScrollerObjects sso : platforms) {
 			if (sso.rect.intersects(player.rect)) {
@@ -74,9 +76,15 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	
 	
 	public void paintComponent(Graphics g) {
+		
+		
 		g.drawImage(img3, 0, 0, 2000, 1000, this);
 	
 		g.drawImage(img2, 0, 800, 2000, 400, this);
+		
+		
+		
+		
 		
 		for (SideScrollerObjects s : platforms) {
 			s.draw(g);
@@ -87,10 +95,23 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		if(player.y >= 1000) {
 			time.stop();
 			g.drawImage(img4, 0, 0, 2000, 1000, this);
-			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan Fraser has just signed on for the sequel to Furry Vengeance.");
+			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan Fraser has just signed on for the sequel to Furry Vengeance!");
 			
 		}
+		
+		g.drawImage(img5, 1600, 0, 300, 400, this);
+		
+		if (collision(player)) {
+			System.out.println("crash");
+			player.setCollide(true);
+			g.drawImage(img6, 0, 0, 2000, 1000, this);
+			time.stop();
+			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan's own crowd funded version of The Mummy has failed miserably, and he is now being prosecuted for the fraudulent use of his only backer's money during production");
 			
+		
+			
+			
+		}
 
 	}
 
@@ -106,6 +127,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		if (collision(player)) {
 			System.out.println("crash");
 			player.setCollide(true);
+			
 		}
 		player.update();
 	}
@@ -143,6 +165,8 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		    img2 = ImageIO.read((this.getClass().getResourceAsStream("poop.jpg")));
 		    img3 = ImageIO.read((this.getClass().getResourceAsStream("boop.jpg")));
 		    img4 = ImageIO.read((this.getClass().getResourceAsStream("encinoman.jpg")));
+		    img5 = ImageIO.read((this.getClass().getResourceAsStream("dollars.png")));
+		    img6 = ImageIO.read((this.getClass().getResourceAsStream("ripbrendan.jpg")));
 		}
 		catch ( IOException exc ) {
 		
