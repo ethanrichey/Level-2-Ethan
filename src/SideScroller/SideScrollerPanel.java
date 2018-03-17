@@ -1,24 +1,28 @@
 package SideScroller;
-
-
 import java.awt.Graphics;
+import java.awt.Point;
+import java.awt.Window;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferedImage;
+import java.awt.peer.MouseInfoPeer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
+import javax.swing.event.MouseInputListener;
 
-public class SideScrollerPanel extends JPanel implements ActionListener, KeyListener {
+public class SideScrollerPanel extends JPanel implements ActionListener, KeyListener, MouseMotionListener, MouseInfoPeer {
 
 	JFrame frame = new JFrame();
 	public static final int HEIGHT = 1000;
@@ -33,9 +37,12 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	private BufferedImage img4 = null;
 	private BufferedImage img5 = null;
 	private BufferedImage img6 = null;
+	private BufferedImage img7 = null;
 	private int yLimit = 1000;
 	Random rando = new Random(10);
-	int networth = 10000000;
+	int networth = 1000000;
+	//public int mouseX;
+	//public int mouseY;
 
 	void run() {
 		frame.setSize(WIDTH, HEIGHT);
@@ -43,8 +50,10 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		frame.add(this);
 		frame.setVisible(true);
 		frame.addKeyListener(this);
+		frame.addMouseMotionListener(this);
 		obj();
 		image();
+		
 		
 		
 	}
@@ -99,17 +108,18 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 			
 		}
 		
-		g.drawImage(img5, 1600, 0, 300, 400, this);
+	
 		
 		if (collision(player)) {
 			System.out.println("crash");
 			player.setCollide(true);
-			g.drawImage(img6, 0, 0, 2000, 1000, this);
+			
+			g.drawImage(img7, 0, 0, 2000, 1000, this);
 			time.stop();
-			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan's own crowd funded version of The Mummy has failed miserably, and he is now being prosecuted for the fraudulent use of his only backer's money during production");
+			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan's own crowd funded version of The Mummy has failed miserably, and he is now being prosecuted for the fraudulent use of his only backer's money during production.");
 			
 		
-			
+			g.drawImage(img5, 1600, 0, 300, 400, this);
 			
 		}
 
@@ -119,6 +129,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public static void main(String[] args) {
 		SideScrollerPanel sidepan = new SideScrollerPanel();
 		sidepan.run();
+		
 	}
 
 	@Override
@@ -158,6 +169,8 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub
 	}
+	
+	
 	public void image () {
 		try {
 			
@@ -167,11 +180,38 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		    img4 = ImageIO.read((this.getClass().getResourceAsStream("encinoman.jpg")));
 		    img5 = ImageIO.read((this.getClass().getResourceAsStream("dollars.png")));
 		    img6 = ImageIO.read((this.getClass().getResourceAsStream("ripbrendan.jpg")));
+		    img7 = ImageIO.read((this.getClass().getResourceAsStream("brendanontrial.jpg")));
 		}
 		catch ( IOException exc ) {
 		
 		    //TODO: Handle exception.
 			}
+	}
+
+	
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public int fillPointWithCoords(Point point) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean isWindowUnderMouse(Window w) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	

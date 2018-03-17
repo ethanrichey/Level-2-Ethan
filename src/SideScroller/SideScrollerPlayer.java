@@ -1,11 +1,17 @@
 package SideScroller;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.Window;
+import java.awt.event.MouseEvent;
+import java.awt.peer.MouseInfoPeer;
+import javax.swing.event.MouseInputListener;
 
-public class SideScrollerPlayer extends SideScrollerObjects {
+public class SideScrollerPlayer extends SideScrollerObjects implements MouseInputListener, MouseInfoPeer {
 
-	private double jumph = -4.7;
-	private double playergrav = .04;
+	private double jumph = -3.5;
+	//private double playergrav = .03;
 	private boolean collide = false;
 	private double yVelocity = 0;
 	private int yLimit = 1000;
@@ -45,14 +51,16 @@ public class SideScrollerPlayer extends SideScrollerObjects {
 		}
 		 else if ( collide == false) {
 			//y += playergrav;
-			y = y + yVelocity;
+			//y = y + yVelocity;
 			//rect.setBounds(x, (int) (y), w, h);
+			y = MouseInfo.getPointerInfo().getLocation().getY();
+			System.out.println("mousepos" + y);
 			
 		}
-		y =  rect.getY();
+		//y =  rect.getY();
 		collide = false;
 		//super.draw(g);
-		yVelocity += playergrav;
+		//yVelocity += playergrav;
 		rect.setRect(x, Math.ceil(y + yVelocity), w, h);
 		//rect.setBounds(x,y + yVelocity, w, h);
 		
@@ -72,5 +80,50 @@ public class SideScrollerPlayer extends SideScrollerObjects {
 		
 		
 		
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public int fillPointWithCoords(Point point) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	@Override
+	public boolean isWindowUnderMouse(Window w) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }
