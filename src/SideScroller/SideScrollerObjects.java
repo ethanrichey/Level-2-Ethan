@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.util.Random;
 
+import javax.swing.JOptionPane;
+
 public class SideScrollerObjects {
 
 	int x;
@@ -14,9 +16,11 @@ public class SideScrollerObjects {
 	boolean scrolls = true;
 	Random rand = new Random();
 	public int randint = rand.nextInt(750);
-	private float scrollspeed = (float) 4.5;
+	public float scrollspeed = (float) 5;
+	public  int counter = 0;
 
-	SideScrollerObjects(int x, int y, int w, int h) {
+	
+	 SideScrollerObjects(int x, int y, int w, int h) {
 		this.x = x;
 		this.y = y;
 		this.w = w;
@@ -33,9 +37,17 @@ public class SideScrollerObjects {
 			x = randint + 2000;
 			y = randint;
 			y = rand.nextInt(1000);
+			scrollspeed += .25;
+					
+			System.out.println(counter);
+			
+		}
+		if(scrollspeed == 6) {
+			counter += 1;
 		}
 		if (scrolls) {
 			x -= scrollspeed;
+			counter += 1;
 		}
 		rect.setBounds(x, (int) y, w, h);
 		g.setColor(Color.RED);
@@ -46,5 +58,8 @@ public class SideScrollerObjects {
 	}
 	public int getY() {
 		return (int) y;
+		
+		
 	}
+	
 }

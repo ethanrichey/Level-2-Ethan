@@ -80,6 +80,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		platforms.add(new SideScrollerObjects(2350, 425, 330, 10));
 		platforms.add(new SideScrollerObjects(2600, 300, 330, 10));
 		platforms.add(new SideScrollerObjects(2850, 175, 330, 10));
+		platforms.add(new SideScrollerObjects(2950, 190, 330, 10));
 	}
 
 	
