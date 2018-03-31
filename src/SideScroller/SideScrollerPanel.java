@@ -38,6 +38,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	private BufferedImage img5 = null;
 	private BufferedImage img6 = null;
 	private BufferedImage img7 = null;
+	private BufferedImage img8 = null;
 	private int yLimit = 1000;
 	Random rando = new Random(10);
 	int networth = 1000000;
@@ -80,7 +81,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		platforms.add(new SideScrollerObjects(2350, 425, 330, 10));
 		platforms.add(new SideScrollerObjects(2600, 300, 330, 10));
 		platforms.add(new SideScrollerObjects(2850, 175, 330, 10));
-		platforms.add(new SideScrollerObjects(2950, 190, 330, 10));
+		platforms.add(new SideScrollerObjects(2950, 310, 330, 10));
 	}
 
 	
@@ -92,8 +93,8 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	
 		g.drawImage(img2, 0, 800, 2000, 400, this);
 		
-		
-		
+		System.out.println(networth);
+		networth -= 100;
 		
 		
 		for (SideScrollerObjects s : platforms) {
@@ -103,9 +104,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		g.drawImage(img, player.x, (int) player.y, player.w, player.h, this);
 		
 		if(player.y >= 1000) {
-			time.stop();
-			g.drawImage(img4, 0, 0, 2000, 1000, this);
-			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan Fraser has just signed on for the sequel to Furry Vengeance!");
+			
 			
 		}
 		
@@ -118,6 +117,8 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 			g.drawImage(img7, 0, 0, 2000, 1000, this);
 			time.stop();
 			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan's own crowd funded version of The Mummy has failed miserably, and he is now being prosecuted for the fraudulent use of his only backer's money during production.");
+			g.drawImage(img8, 0, 0, 2000, 1000, this);
+			frame.dispose();
 			
 		
 			g.drawImage(img5, 1600, 0, 300, 400, this);
@@ -182,6 +183,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		    img5 = ImageIO.read((this.getClass().getResourceAsStream("dollars.png")));
 		    img6 = ImageIO.read((this.getClass().getResourceAsStream("ripbrendan.jpg")));
 		    img7 = ImageIO.read((this.getClass().getResourceAsStream("brendanontrial.jpg")));
+		    img8 = ImageIO.read((this.getClass().getResourceAsStream("myman.jpg")));
 		}
 		catch ( IOException exc ) {
 		
