@@ -1,4 +1,11 @@
 package SideScroller;
+import java.awt.Color;
+import javax.media.*;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Window;
@@ -22,6 +29,11 @@ import javax.swing.JPanel;
 import javax.swing.Timer;
 import javax.swing.event.MouseInputListener;
 
+
+
+
+
+
 public class SideScrollerPanel extends JPanel implements ActionListener, KeyListener, MouseMotionListener, MouseInfoPeer {
 
 	JFrame frame = new JFrame();
@@ -39,11 +51,17 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	private BufferedImage img6 = null;
 	private BufferedImage img7 = null;
 	private BufferedImage img8 = null;
+	private BufferedImage img9 = null;
 	private int yLimit = 1000;
 	Random rando = new Random(10);
 	int networth = 1000000;
 	//public int mouseX;
 	//public int mouseY;
+	public final int GAMESTATE = 1;
+	public final int MENUSTATE = 0;
+	int currentstate;
+	String enter = "PRESS ENTER TO BEGIN";
+	Font font = new Font("Arial", Font.BOLD, 40);
 
 	void run() {
 		frame.setSize(WIDTH, HEIGHT);
@@ -54,6 +72,10 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		frame.addMouseMotionListener(this);
 		obj();
 		image();
+		currentstate = 0;
+		playSound();
+		time.start();
+		
 		
 		
 		
@@ -87,10 +109,31 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	
 	
 	public void paintComponent(Graphics g) {
+		 
+		if(currentstate == 1) {
+			drawGameState(g);
+		}
+		else if(currentstate == 0) {
+			drawMenuState(g);
+		}
+	
+	}
+
+	
+	public void drawMenuState(Graphics g) {
+		g.drawImage(img9, 0, 0, 2000, 1000, this);
+		g.setFont(font);
+		g.setColor(Color.RED);
+		g.drawString(enter, 600, 550);
+		
+		
+	}
+	
+	public void drawGameState(Graphics g) {
 		
 		
 		g.drawImage(img3, 0, 0, 2000, 1000, this);
-	
+		
 		g.drawImage(img2, 0, 800, 2000, 400, this);
 		
 		System.out.println(networth);
@@ -116,7 +159,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 			
 			g.drawImage(img7, 0, 0, 2000, 1000, this);
 			time.stop();
-			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan's own crowd funded version of The Mummy has failed miserably, and he is now being prosecuted for the fraudulent use of his only backer's money during production.");
+			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan has given up.");
 			g.drawImage(img8, 0, 0, 2000, 1000, this);
 			frame.dispose();
 			
@@ -126,7 +169,18 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		}
 
 	}
-
+	
+	public void playSound() {
+	    try {
+	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/SideScroller/Save Brendan Fraser.wav").getAbsoluteFile());
+	        Clip clip = AudioSystem.getClip();
+	        clip.open(audioInputStream);
+	        clip.start();
+	    } catch(Exception ex) {
+	        System.out.println("Error playing sound.");
+	        ex.printStackTrace();
+	    }
+	}
 	
 	public static void main(String[] args) {
 		SideScrollerPanel sidepan = new SideScrollerPanel();
@@ -134,6 +188,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		
 	}
 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
@@ -162,7 +217,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 			repaint();
 		}
 		if(e.getKeyCode() == KeyEvent.VK_ENTER) {
-			time.start();
+			currentstate = 1; 
 			
 			}
 	}
@@ -176,14 +231,15 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public void image () {
 		try {
 			
-		    img = ImageIO.read((this.getClass().getResourceAsStream("brendan.jpg")));
-		    img2 = ImageIO.read((this.getClass().getResourceAsStream("poop.jpg")));
-		    img3 = ImageIO.read((this.getClass().getResourceAsStream("boop.jpg")));
-		    img4 = ImageIO.read((this.getClass().getResourceAsStream("encinoman.jpg")));
-		    img5 = ImageIO.read((this.getClass().getResourceAsStream("dollars.png")));
-		    img6 = ImageIO.read((this.getClass().getResourceAsStream("ripbrendan.jpg")));
-		    img7 = ImageIO.read((this.getClass().getResourceAsStream("brendanontrial.jpg")));
-		    img8 = ImageIO.read((this.getClass().getResourceAsStream("myman.jpg")));
+		     img = ImageIO.read((this.getClass().getResourceAsStream("brendan.jpg")));
+		     img2 = ImageIO.read((this.getClass().getResourceAsStream("poop.jpg")));
+		     img3 = ImageIO.read((this.getClass().getResourceAsStream("boop.jpg")));
+		     img4 = ImageIO.read((this.getClass().getResourceAsStream("encinoman.jpg")));
+		   //img5 = ImageIO.read((this.getClass().getResourceAsStream("dollars.png")));
+		   //img6 = ImageIO.read((this.getClass().getResourceAsStream("ripbrendan.jpg")));
+		   //img7 = ImageIO.read((this.getClass().getResourceAsStream("brendanontrial.jpg")));
+		   //img8 = ImageIO.read((this.getClass().getResourceAsStream("myman.jpg")));
+		     img9 = ImageIO.read((this.getClass().getResourceAsStream("brendanboy.jpeg")));
 		}
 		catch ( IOException exc ) {
 		
