@@ -1,6 +1,5 @@
 package SideScroller;
 import java.awt.Color;
-import javax.media.*;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -52,6 +51,9 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	private BufferedImage img7 = null;
 	private BufferedImage img8 = null;
 	private BufferedImage img9 = null;
+	private BufferedImage img10 = null;
+	private BufferedImage img11 = null;
+	
 	private int yLimit = 1000;
 	Random rando = new Random(10);
 	int networth = 1000000;
@@ -61,7 +63,11 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	public final int MENUSTATE = 0;
 	int currentstate;
 	String enter = "PRESS ENTER TO BEGIN";
+	String money = "$" + networth;
+	String therapist = "You are Brendan Fraser's new therapsit, and it is you job to help him dodge his own depressing, doubt filled, and existential thoughts.";
 	Font font = new Font("Arial", Font.BOLD, 40);
+	Font font1 = new Font("Arial", Font.BOLD, 30);
+	
 
 	void run() {
 		frame.setSize(WIDTH, HEIGHT);
@@ -124,7 +130,9 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		g.drawImage(img9, 0, 0, 2000, 1000, this);
 		g.setFont(font);
 		g.setColor(Color.RED);
-		g.drawString(enter, 600, 550);
+		g.drawString(enter, 650, 550);
+		g.setFont(font1);
+		g.drawString(therapist, 10, 650);
 		
 		
 	}
@@ -136,16 +144,27 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		
 		g.drawImage(img2, 0, 800, 2000, 400, this);
 		
-		System.out.println(networth);
-		networth -= 100;
 		
+			
+			
+		if(networth <= 600000) {
+			g.drawImage(img10, 0, 0, 2000, 1000, this);
+		}
+		
+		else if(networth <= 300000) {
+			g.drawImage(img11,0, 0, 2000, 1000, this);
+		}
 		
 		for (SideScrollerObjects s : platforms) {
 			s.draw(g);
 		}
 		player.draw(g);
 		g.drawImage(img, player.x, (int) player.y, player.w, player.h, this);
-		
+		money ="$" + networth;
+		g.setFont(font);
+		g.setColor(Color.GREEN);
+		g.drawString(money, 1700, 50);
+		networth -= 600;
 		if(player.y >= 1000) {
 			
 			
@@ -239,7 +258,9 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		   //img6 = ImageIO.read((this.getClass().getResourceAsStream("ripbrendan.jpg")));
 		   //img7 = ImageIO.read((this.getClass().getResourceAsStream("brendanontrial.jpg")));
 		   //img8 = ImageIO.read((this.getClass().getResourceAsStream("myman.jpg")));
-		     img9 = ImageIO.read((this.getClass().getResourceAsStream("brendanboy.jpeg")));
+		     img9 = ImageIO.read((this.getClass().getResourceAsStream("brendanboy.jpg")));
+		     img10 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendan1.jpg")));
+		     img11 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendan2.jpg")));
 		}
 		catch ( IOException exc ) {
 		

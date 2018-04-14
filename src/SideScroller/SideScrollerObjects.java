@@ -16,8 +16,9 @@ public class SideScrollerObjects {
 	boolean scrolls = true;
 	Random rand = new Random();
 	public int randint = rand.nextInt(750);
-	public float scrollspeed = (float) 1;
+	public float scrollspeed = (float) 1.8;
 	public  int counter = 0;
+	
 
 	
 	 SideScrollerObjects(int x, int y, int w, int h) {
