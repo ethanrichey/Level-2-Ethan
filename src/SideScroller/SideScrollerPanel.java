@@ -53,6 +53,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	private BufferedImage img9 = null;
 	private BufferedImage img10 = null;
 	private BufferedImage img11 = null;
+	private BufferedImage img12 = null;
 	
 	private int yLimit = 1000;
 	Random rando = new Random(10);
@@ -61,9 +62,11 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	//public int mouseY;
 	public final int GAMESTATE = 1;
 	public final int MENUSTATE = 0;
+	public final int ENDSTATE = 2;
 	int currentstate;
 	String enter = "PRESS ENTER TO BEGIN";
 	String money = "$" + networth;
+	String rip = "R.I.P. Brendan J. Fraser";
 	String therapist = "You are Brendan Fraser's new therapsit, and it is you job to help him dodge his own depressing, doubt filled, and existential thoughts.";
 	Font font = new Font("Arial", Font.BOLD, 40);
 	Font font1 = new Font("Arial", Font.BOLD, 30);
@@ -122,7 +125,9 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		else if(currentstate == 0) {
 			drawMenuState(g);
 		}
-	
+		else if(currentstate == 2) {
+			drawEndState(g);
+		}
 	}
 
 	
@@ -164,23 +169,22 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		g.setFont(font);
 		g.setColor(Color.GREEN);
 		g.drawString(money, 1700, 50);
-		networth -= 600;
+		networth -= 50;
 		if(player.y >= 1000) {
 			
 			
 		}
 		
-	
+		
 		
 		if (collision(player)) {
 			System.out.println("crash");
 			player.setCollide(true);
 			
 			g.drawImage(img7, 0, 0, 2000, 1000, this);
-			time.stop();
-			JOptionPane.showMessageDialog(null, "GAME OVER! Brendan has given up.");
+			currentstate = 2;
 			g.drawImage(img8, 0, 0, 2000, 1000, this);
-			frame.dispose();
+	
 			
 		
 			g.drawImage(img5, 1600, 0, 300, 400, this);
@@ -189,6 +193,15 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 
 	}
 	
+	
+		public void drawEndState(Graphics g) {
+			g.drawImage(img12, 0, 0, 2000, 1000, this);
+			g.setFont(font);
+			g.setColor(Color.BLACK);
+			g.drawString(rip, 500, 200);
+			
+			
+	}
 	public void playSound() {
 	    try {
 	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/SideScroller/Save Brendan Fraser.wav").getAbsoluteFile());
@@ -261,6 +274,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		     img9 = ImageIO.read((this.getClass().getResourceAsStream("brendanboy.jpg")));
 		     img10 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendan1.jpg")));
 		     img11 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendan2.jpg")));
+		     img12 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendanend.jpg")));
 		}
 		catch ( IOException exc ) {
 		
