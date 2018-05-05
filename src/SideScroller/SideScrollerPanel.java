@@ -67,7 +67,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	String enter = "PRESS ENTER TO BEGIN";
 	String money = "$" + networth;
 	String rip = "R.I.P. Brendan J. Fraser";
-	String therapist = "You are Brendan Fraser's new therapsit, and it is you job to help him dodge his own depressing, doubt filled, and existential thoughts.";
+	String therapist = "You are Brendan Fraser's new therapsit, and it is you job to help him dodge his own depressing, doubt filled existential thoughts.";
 	Font font = new Font("Arial", Font.BOLD, 40);
 	Font font1 = new Font("Arial", Font.BOLD, 30);
 	
@@ -169,7 +169,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		g.setFont(font);
 		g.setColor(Color.GREEN);
 		g.drawString(money, 1700, 50);
-		networth -= 50;
+		networth -= 200;
 		if(player.y >= 1000) {
 			
 			
@@ -274,7 +274,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		     img9 = ImageIO.read((this.getClass().getResourceAsStream("brendanboy.jpg")));
 		     img10 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendan1.jpg")));
 		     img11 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendan2.jpg")));
-		     img12 = ImageIO.read((this.getClass().getResourceAsStream("sadbrendanend.jpg")));
+		     img12 = ImageIO.read((this.getClass().getResourceAsStream("Ting2.png")));
 		}
 		catch ( IOException exc ) {
 		
