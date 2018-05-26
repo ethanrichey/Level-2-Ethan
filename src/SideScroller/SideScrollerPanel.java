@@ -82,7 +82,6 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		obj();
 		image();
 		currentstate = 0;
-		playSound();
 		time.start();
 		
 		
@@ -150,13 +149,14 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		g.drawImage(img2, 0, 800, 2000, 400, this);
 		
 		
+		
 			
 			
-		if(networth <= 600000) {
+		if(networth <= 600000 ) {
 			g.drawImage(img10, 0, 0, 2000, 1000, this);
 		}
 		
-		else if(networth <= 300000) {
+		 if(networth <= 300000) {
 			g.drawImage(img11,0, 0, 2000, 1000, this);
 		}
 		
@@ -169,7 +169,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 		g.setFont(font);
 		g.setColor(Color.GREEN);
 		g.drawString(money, 1700, 50);
-		networth -= 200;
+		networth -= 50;
 		if(player.y >= 1000) {
 			
 			
@@ -193,25 +193,29 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 
 	}
 	
+	/*public void gameRestart() {
+		networth = 1000000;
+		time.restart();
+		platforms.
+		
+	}
+	*/
 	
 		public void drawEndState(Graphics g) {
 			g.drawImage(img12, 0, 0, 2000, 1000, this);
 			g.setFont(font);
 			g.setColor(Color.BLACK);
 			g.drawString(rip, 500, 200);
+			g.setFont(font);
+			g.setColor(Color.RED);
+			g.drawString("Press Escape to close", 1000, 500);
+			g.setFont(font);
+			g.setColor(Color.RED);
+			g.drawString("Press Backspace to restart", 1000, 600);
 			
 			
-	}
-	public void playSound() {
-	    try {
-	        AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(new File("src/SideScroller/Save Brendan Fraser.wav").getAbsoluteFile());
-	        Clip clip = AudioSystem.getClip();
-	        clip.open(audioInputStream);
-	        clip.start();
-	    } catch(Exception ex) {
-	        System.out.println("Error playing sound.");
-	        ex.printStackTrace();
-	    }
+			
+			
 	}
 	
 	public static void main(String[] args) {
@@ -252,6 +256,12 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 			currentstate = 1; 
 			
 			}
+		if(e.getKeyCode() == KeyEvent.VK_ESCAPE) {
+			frame.dispose();
+			time.stop();
+		}
+		
+		
 	}
 
 	@Override
@@ -304,7 +314,6 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 
 	@Override
 	public boolean isWindowUnderMouse(Window w) {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
