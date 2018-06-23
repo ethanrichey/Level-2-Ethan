@@ -67,7 +67,7 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 	String enter = "PRESS ENTER TO BEGIN";
 	String money = "$" + networth;
 	String rip = "R.I.P. Brendan J. Fraser";
-	String therapist = "You are Brendan Fraser's new therapsit, and it is you job to help him dodge his own depressing, doubt filled existential thoughts.";
+	String therapist = "You are Brendan Fraser's new therapsit, and it is your job to help him dodge his own depressing, doubt filled existential thoughts.";
 	Font font = new Font("Arial", Font.BOLD, 40);
 	Font font1 = new Font("Arial", Font.BOLD, 30);
 	
