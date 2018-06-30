@@ -10,7 +10,7 @@ import javax.swing.event.MouseInputListener;
 
 public class SideScrollerPlayer extends SideScrollerObjects implements MouseInputListener, MouseInfoPeer {
 
-	private double jumph = -3.5;
+	//private double jumph = -3.5;
 	//private double playergrav = .03;
 	private boolean collide = false;
 	private double yVelocity = 0;
@@ -27,15 +27,6 @@ public class SideScrollerPlayer extends SideScrollerObjects implements MouseInpu
 		this.collide = collide;
 	}
 
-	public void jump() {
-		yVelocity = jumph;
-
-	}
-
-	public void setJumph(int jumph) {
-		this.jumph = jumph;
-
-	}
 	public void setYLimit(int l) {
 		yLimit = l;
 	}
