@@ -209,9 +209,6 @@ public class SideScrollerPanel extends JPanel implements ActionListener, KeyList
 			g.setFont(font);
 			g.setColor(Color.RED);
 			g.drawString("Press Escape to close", 1000, 500);
-			g.setFont(font);
-			g.setColor(Color.RED);
-			g.drawString("Press Backspace to restart", 1000, 600);
 			
 			
 			
